@@ -25,7 +25,7 @@
           <input type="text" class="form-control" id="T" name="T" value="{{ T }}"/>
         </div>
       </div>
-      
+
       <div class="form-group">
         <label class="control-label col-sm-2" for="u0">u0 [m/s]</label>
         <div class="col-sm-4">
@@ -46,7 +46,7 @@
           <input type="text" class="form-control" id="psi_a_degree" name="psi_a_degree" value="{{ psi_a_degree }}"/>
         </div>
       </div>
-      
+
       <div class="form-group">
         <label class="control-label col-sm-2" for="t1">t1 [s] </label>
         <div class="col-sm-2">
@@ -127,12 +127,12 @@
           <input type="text" class="form-control" id="animation_speed" name="animation_speed" value="{{ animation_speed }}"/>
         </div>
       </div>
-      
+
       <div class="form-group">
         <div class="col-sm-offset-8 col-sm-2">
           <button type="submit" class="btn btn-primary" id='action' name='action' value='cal'>View</button>
         </div>
-      
+
       </div>
     </div>
   </div>
@@ -181,7 +181,7 @@
 {% if result %}
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-  
+
   ////////////////////////////
   // Data preparation
   ////////////////////////////
@@ -277,7 +277,7 @@
     dataTable.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
     dataTable.addColumn('number', 'r [degree/s]');
     dataTable.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
-    
+
     for(var i=0;i<kt.length;i++){
       dataTable.addRow([
         kt[i][0],
@@ -301,7 +301,7 @@
         maxZoomIn: 8.0
       }
     };
-    
+
     var chart = new google.visualization.LineChart(document.getElementById('turning_chart'));
     chart.draw(dataTable, options);
 
@@ -351,7 +351,7 @@
     dataTable.addColumn('number', 'time');
     dataTable.addColumn('number', 'Speed over ground[m/s]');
     dataTable.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
-    
+
     for(var i=0;i<kt.length;i++){
       dataTable.addRow([
         kt[i][0],
@@ -371,7 +371,7 @@
         maxZoomIn: 8.0
       }
     };
-    
+
     var chart = new google.visualization.LineChart(document.getElementById('speed_chart'));
     chart.draw(dataTable, options);
 
@@ -429,7 +429,7 @@
   //   dataTable.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
   //   dataTable.addColumn('number', 'Depth[m]');
   //   dataTable.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
-    
+
   //   for(var i=0;i<kt.length;i++){
   //     dataTable.addRow([
   //       kt[i][0],
@@ -457,7 +457,7 @@
   //       maxZoomIn: 8.0
   //     }
   //   };
-    
+
   //   var chart = new google.visualization.LineChart(document.getElementById('external_chart'));
   //   chart.draw(dataTable, options);
 
@@ -498,7 +498,7 @@
     // });
   // }
 
-  
+
   ////////////////////////////////
   // For kt animation
   ////////////////////////////////
@@ -506,7 +506,7 @@
   var controls,mesh;
   var count = 0;
   init();
-  
+
   var animationStartTime = new Date().getTime();
   animate();
 
@@ -580,8 +580,8 @@
 <script type="text/javascript">
 window.onload = function(){
   document.getElementById('download').addEventListener('click', function (e){
-    var data = "Time,RudderAngle,X,Y,HDG,u,r";
-    
+    var data = "Time,RudderAngle_degree,X,Y,HDG_degree,u,r_degree";
+
     for(let i=0; i< kt.length; i++ ){
       data += '\r\n'+kt[i].join(',')
     }
